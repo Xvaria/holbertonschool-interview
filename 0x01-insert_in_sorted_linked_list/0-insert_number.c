@@ -41,12 +41,12 @@ listint_t *insert_node(listint_t **head, int number)
 				current = current->next;
 			}
 		}
-		if (!current->next)
+		if (!current->next && current->n != number)
 			current->next = new;
-	}
-	while (current->next)
-	{
-		current = current->next;
+		while (current->next)
+		{
+			current = current->next;
+		}
 	}
 	return (new);
 }
