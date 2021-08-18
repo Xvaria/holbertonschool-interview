@@ -51,7 +51,7 @@ int grid_status(int grid[3][3])
 
 void process_sandpile(int grid1[3][3])
 {
-	int d_grid[3][3] = {0}, row, column;
+	int d_grid[3][3] = {{0}}, row, column;
 
 	for (row = 0; row < 3; row++)
 		for (column = 0; column < 3; column++)
