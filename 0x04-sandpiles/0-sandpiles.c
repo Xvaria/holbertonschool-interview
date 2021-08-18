@@ -90,7 +90,7 @@ void process_sandpile(int grid1[3][3])
 						d_grid[row][column] -= 1, d_grid[row][column - 1] += 1;
 					}
 			}
-	sandpiles_sum(grid1, dif_grid);
+	sandpiles_sum(grid1, d_grid);
 }
 
 /**
