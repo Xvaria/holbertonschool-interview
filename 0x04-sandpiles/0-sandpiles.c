@@ -51,47 +51,43 @@ int grid_status(int grid[3][3])
 
 void process_sandpile(int grid1[3][3])
 {
-	int dif_grid[3][3] = {0}, row, column;
+	int d_grid[3][3] = {0}, row, column;
 
 	for (row = 0; row < 3; row++)
 		for (column = 0; column < 3; column++)
 			if (grid1[row][column] > 3)
 			{
 				if (row == 0)
-					dif_grid[row][column] -= 1;
+					d_grid[row][column] -= 1;
 				else
 					if ((grid1[row][column] - grid1[row - 1][column]) >= 3 ||
 					   grid1[row - 1][column] < 3)
 					{
-						dif_grid[row][column] -= 1;
-						dif_grid[row - 1][column] += 1;
+						d_grid[row][column] -= 1, d_grid[row - 1][column] += 1;
 					}
 				if (column == 2)
-					dif_grid[row][column] -= 1;
+					d_grid[row][column] -= 1;
 				else
 					if ((grid1[row][column] - grid1[row][column + 1]) >= 3 ||
 					   grid1[row][column + 1] < 3)
 					{
-						dif_grid[row][column] -= 1;
-						dif_grid[row][column + 1] += 1;
+						d_grid[row][column] -= 1, d_grid[row][column + 1] += 1;
 					}
 				if (row == 2)
-					dif_grid[row][column] -= 1;
+					d_grid[row][column] -= 1;
 				else
 					if ((grid1[row][column] - grid1[row + 1][column]) >= 3 ||
 					   grid1[row + 1][column] < 3)
 					{
-						dif_grid[row][column] -= 1;
-						dif_grid[row + 1][column] += 1;
+						d_grid[row][column] -= 1, d_grid[row + 1][column] += 1;
 					}
 				if (column == 0)
-					dif_grid[row][column] -= 1;
+					d_grid[row][column] -= 1;
 				else
 					if ((grid1[row][column] - grid1[row][column - 1]) >= 3 ||
 					   grid1[row][column - 1] < 3)
 					{
-						dif_grid[row][column] -= 1;
-						dif_grid[row][column - 1] += 1;
+						d_grid[row][column] -= 1, d_grid[row][column - 1] += 1;
 					}
 			}
 	sandpiles_sum(grid1, dif_grid);
