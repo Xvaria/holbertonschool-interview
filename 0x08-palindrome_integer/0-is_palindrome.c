@@ -10,9 +10,9 @@ int is_palindrome(unsigned long n)
 	int count, i;
 	char numb[19];
 
-	sprintf(numb, "%ld", n);
-	count = strlen(numb);
-	for (i = 0; i < count; i++)
+	count = sprintf(numb, "%ld", n);
+	printf("%d\n", count);
+	for (i = 0; i < count / 2; i++)
 	{
 		if (numb[i] != numb[count - 1 - i])
 			return 0;
