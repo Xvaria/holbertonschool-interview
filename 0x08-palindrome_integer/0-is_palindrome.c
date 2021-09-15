@@ -8,7 +8,7 @@
 int is_palindrome(unsigned long n)
 {
 	int count, i;
-	char numb[1024];
+	char numb[19];
 
 	sprintf(numb, "%ld", n);
 	count = strlen(numb);
