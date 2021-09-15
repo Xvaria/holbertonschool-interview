@@ -11,7 +11,6 @@ int is_palindrome(unsigned long n)
 	char numb[19];
 
 	count = sprintf(numb, "%ld", n);
-	printf("%d\n", count);
 	for (i = 0; i < count / 2; i++)
 	{
 		if (numb[i] != numb[count - 1 - i])
