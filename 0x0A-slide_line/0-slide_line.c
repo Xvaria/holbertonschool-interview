@@ -10,85 +10,64 @@
 
 int slide_line(int *line, size_t size, int direction)
 {
-	int i = 0, j = 0, count = size, ind = 0, tmp = 0, rest = 0;
+	int index = 0, index_2 = 0, size_int = size, tmp = 0;
 
-	if (!line || (direction != 0 || direction != 1))
+	if (line == NULL || (direction != 0 && direction != 1))
 		return (0);
 
 	if (direction == 0)
 	{
-		ind = 0;
-		for (i = 0; i < count; i++)
+		for (index = 0; index < size_int; index++)
 		{
-			if (line[i] != 0)
-				for (j = 1 + i; j < count; j++)
-				{
-					if (line[j] == 0)
-						continue;
-					else if (line[i] == line[j])
-					{
-						tmp = line[i] + line[j];
-						line[j] = 0;
-						line[i] = 0;
-						line[ind] = tmp;
-						ind++;
-						i++;
-						break;
-					}
-					else
-					{
-						line[ind] = line[i];
-						ind++;
-						break;
-					}
-				}
-			if (i == count - 1)
+			if (line[index] == line[index + 1] && line[index] != 0)
 			{
-				tmp = line[i];
-				line[i] = 0;
-				line[ind] = tmp;
-				ind++;
+				line[index_2++] = line[index] + line[index + 1],
+				index++;
+				line[index_2] = 0;
+			}
+			else if (line[index] != 0)
+			{
+				if (tmp == line[index])
+				{
+					line[--index_2] = tmp * 2;
+					index_2++;
+					tmp = 0;
+				}
+				else
+					line[index_2++] = line[index], tmp =
+					line[index];
 			}
 		}
+		for (index = index_2; index < size_int; index++)
+			line[index] = 0;
 	}
-
-	else if (direction == 1)
+	else
 	{
-		ind = count - 1;
-		for (i = count - 1; i >= 0; i--)
+		index_2 = size - 1;
+
+		for (index = size_int - 1; index > -1; index--)
 		{
-			if (line[i] != 0)
-				for (j = count - 2 - rest; j >= 0; j--)
-				{
-					if (line[j] == 0)
-						continue;
-					else if (line[i] == line[j])
-					{
-						tmp = line[i] + line[j];
-						line[j] = 0;
-						line[i] = 0;
-						line[ind] = tmp;
-						ind--;
-						i--;
-						rest++;
-						break;
-					}
-					else
-					{
-						line[ind] = line[i];
-						ind--;
-						break;
-					}
-				}
-			rest++;
-			if (i == 0)
+			if (line[index] == line[index - 1] && line[index] != 0)
 			{
-				tmp = line[i];
-				line[i] = 0;
-				line[ind] = tmp;
-				ind--;
+				line[index_2--] = line[index] +
+				line[index - 1], index--;
+				line[index_2] = 0;
+			}
+			else if (line[index] != 0)
+			{
+				if (tmp == line[index])
+				{
+					line[++index_2] = tmp * 2;
+					index_2--;
+					tmp = 0;
+				}
+				else
+					line[index_2--] = line[index],
+					tmp = line[index];
 			}
 		}
+		for (index = index_2; index > -1; index--)
+			line[index] = 0;
 	}
 	return (1);
 }
