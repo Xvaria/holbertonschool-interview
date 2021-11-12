@@ -1,6 +1,7 @@
 #!/usr/bin/node
 const argv = process.argv;
-const urlMovie = `https://swapi-api.hbtn.io/api/films/${argv[2]}`;
+const url = 'https://swapi-api.hbtn.io/api/films/';
+const urlMovie = `${url}${argv[2]}/`;
 
 const request = require('request');
 
